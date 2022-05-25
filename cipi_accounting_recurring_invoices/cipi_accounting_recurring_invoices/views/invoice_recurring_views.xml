@@ -1,0 +1,23 @@
+<?xml version ="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inherit_invoice_recurring" model="ir.ui.view">
+        <field name="name">inherit.invoice.recurring.form.view</field>
+        <field name="model">invoice.recurring</field>
+        <field name="inherit_id" ref="equip3_accounting_recurring.invoice_recurring_form_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='branch_id']" position="after">
+                <field name="reasons" attrs="{'invisible': [('state', '!=', 'cancel')]}"/>
+            </xpath>
+
+            <xpath expr="//header/button[@name='cancel']" position="after">
+<!--                <button name="%(cipi_accounting_recurring_invoices.accounting_recurring_cancel_wizard_action)d" string="Cancelled" type="object"-->
+<!--                        class="oe_highlight" attrs="{'invisible': [('state', '!=', 'confirm')]}"/>-->
+                <button name="%(cipi_accounting_recurring_invoices.accounting_recurring_cancel_wizard_action)d" type="action" string="Email"/>
+            </xpath>
+
+            <xpath expr="//header/button[@name='cancel']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

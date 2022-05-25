@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="accounting_recurring_cancel_wizard_view_form" model="ir.ui.view">
+        <field name="name">accounting.recurring.refuse.wizard.form</field>
+        <field name="model">accounting.cancel.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cancel reason">
+                <separator string="Reason to refuse Expense"/>
+                <field name="reasons"/>
+                <footer>
+                    <button string='Submit Reason' name="recurring_cancel_reason" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+           </form>
+        </field>
+    </record>
+
+    <record id="accounting_recurring_cancel_wizard_action" model="ir.actions.act_window">
+        <field name="name">Recurring Cancel</field>
+        <field name="res_model">accounting.cancel.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="accounting_recurring_cancel_wizard_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>
